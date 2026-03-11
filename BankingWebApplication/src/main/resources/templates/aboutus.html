@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>About Us - GoldDiggerBank</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+
+body{
+background:linear-gradient(120deg,#eef2f3,#dfe9f3);
+font-family:'Segoe UI',sans-serif;
+}
+
+/* Navbar */
+
+.navbar{
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar-brand{
+font-weight:bold;
+font-size:22px;
+}
+
+/* Header */
+
+.header-section{
+background:linear-gradient(135deg,#0d6efd,#6f42c1);
+color:white;
+text-align:center;
+padding:60px;
+border-radius:0 0 40px 40px;
+margin-bottom:40px;
+}
+
+.header-section h1{
+font-weight:bold;
+}
+
+/* Cards */
+
+.service-card{
+border:none;
+border-radius:20px;
+background:rgba(255,255,255,0.9);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+text-align:center;
+padding:30px;
+height:100%;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.icon-box{
+font-size:45px;
+margin-bottom:15px;
+color:#0d6efd;
+}
+
+.section-title{
+font-weight:bold;
+margin-bottom:20px;
+color:#0d6efd;
+}
+
+/* Footer */
+
+footer{
+margin-top:60px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<div class="container-fluid">
+<a style="color: white;" class="navbar-brand" th:href="@{home}">
+<i class="fa-solid fa-building-columns"></i> GoldDiggerBank</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{aboutus}">About Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{contactus}">Contact Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{services}">Services</a>
+</li>
+
+</ul>
+
+<button type="button" onclick="window.location.href='/logout'" class="btn btn-warning">LogOut</button>
+
+</div>
+</div>
+</nav>
+
+<!-- Header -->
+
+<div class="header-section">
+
+<h1><i class="fa-solid fa-building-columns"></i> About GoldDiggerBank</h1>
+
+<p>Your Trusted Partner in Secure Digital Banking</p>
+
+</div>
+
+<!-- About Section -->
+
+<div class="container">
+
+<h2 class="text-center section-title">About Our Bank</h2>
+
+<p class="text-center mb-5">
+
+GoldDiggerBank is a modern financial institution dedicated to providing secure,
+reliable, and innovative banking solutions. Established in 2015, our mission
+is to empower customers with convenient banking services, advanced digital
+platforms, and strong financial support to achieve their goals.
+
+</p>
+
+</div>
+
+<!-- Bank Information -->
+
+<div class="container">
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-clock-rotate-left"></i>
+</div>
+
+<h5 class="section-title">Our History</h5>
+
+<p>
+GoldDiggerBank was founded in 2015 by visionary entrepreneur
+<strong>Mr. Arjun Mehta</strong>. Starting with a single branch,
+the bank has rapidly grown into a trusted financial institution
+serving thousands of customers across India.
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-network-wired"></i>
+</div>
+
+<h5 class="section-title">Our Network</h5>
+
+<ul class="list-unstyled">
+
+<li>50+ Branches across India</li>
+<li>120+ ATM Locations</li>
+<li>24/7 Digital Banking</li>
+<li>Mobile & Internet Banking</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-circle-info"></i>
+</div>
+
+<h5 class="section-title">Bank Details</h5>
+
+<ul class="list-unstyled">
+
+<li><strong>Head Office:</strong> Mumbai, India</li>
+<li><strong>Employees:</strong> 1200+ Staff</li>
+<li><strong>Customers:</strong> 5,00,000+</li>
+<li><strong>Support:</strong> 24x7 Customer Care</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Services -->
+
+<div class="container mt-5">
+
+<h2 class="text-center section-title">Our Banking Services</h2>
+
+<div class="row g-4 mt-3">
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-piggy-bank"></i>
+</div>
+
+<h5>Savings Accounts</h5>
+
+<p>Secure and flexible savings options with attractive interest rates.</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-hand-holding-dollar"></i>
+</div>
+
+<h5>Loans</h5>
+
+<p>Home, personal, and business loans with competitive rates.</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-laptop"></i>
+</div>
+
+<h5>Online Banking</h5>
+
+<p>Access your account anytime with secure internet banking.</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-credit-card"></i>
+</div>
+
+<h5>ATM Services</h5>
+
+<p>Withdraw cash and perform transactions from our wide ATM network.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center p-3">
+
+<p>© 2026 GoldDiggerBank | Secure Digital Banking</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

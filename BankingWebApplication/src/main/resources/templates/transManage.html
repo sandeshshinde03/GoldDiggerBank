@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>User Dashboard - GoldDiggerBank</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+
+body{
+background:linear-gradient(120deg,#eef2f3,#dfe9f3);
+font-family:'Segoe UI',sans-serif;
+}
+
+/* Navbar */
+
+.navbar{
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.navbar-brand{
+font-weight:bold;
+font-size:22px;
+}
+
+/* Header */
+
+.header{
+background:linear-gradient(135deg,#0d6efd,#6610f2);
+color:white;
+padding:60px;
+text-align:center;
+border-radius:0 0 40px 40px;
+margin-bottom:40px;
+}
+
+.header h1{
+font-weight:bold;
+}
+
+/* Cards */
+
+.service-card{
+border:none;
+border-radius:20px;
+background:rgba(255,255,255,0.9);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+text-align:center;
+padding:30px;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.icon-box{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.withdraw-icon{ color:#dc3545; }
+.deposit-icon{ color:#198754; }
+.transfer-icon{ color:#ffc107; }
+.atm-icon{ color:#0d6efd; }
+
+.btn-custom{
+border-radius:25px;
+padding:8px 20px;
+}
+
+/* Footer */
+
+footer{
+margin-top:60px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<div class="container-fluid">
+<a style="color: white;" class="navbar-brand" th:href="@{home}">
+<i class="fa-solid fa-building-columns"></i> GoldDiggerBank</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{aboutus}">About Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{contactus}">Contact Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{services}">Services</a>
+</li>
+
+</ul>
+
+<button type="button" onclick="window.location.href='/logout'" class="btn btn-warning">LogOut</button>
+
+</div>
+</div>
+</nav>
+
+
+<!-- Header -->
+
+<div class="header">
+
+<h1>Welcome to Your Banking Dashboard</h1>
+
+<p>Manage your transactions securely with GoldDiggerBank</p>
+
+</div>
+
+
+<!-- Services -->
+
+<div class="container">
+
+<div class="row g-4">
+
+<!-- Withdraw -->
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box withdraw-icon">
+<i class="fa-solid fa-money-bill-wave"></i>
+</div>
+
+<h5>Withdraw</h5>
+
+<p>Withdraw money instantly from your account securely.</p>
+
+<button onclick="window.location.href='/withdrawForm'"
+class="btn btn-danger btn-custom">
+Withdraw
+</button>
+
+</div>
+
+</div>
+
+
+<!-- Deposit -->
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box deposit-icon">
+<i class="fa-solid fa-piggy-bank"></i>
+</div>
+
+<h5>Deposit</h5>
+
+<p>Deposit funds into your account anytime.</p>
+
+<button onclick="window.location.href='/depositeForm'"
+class="btn btn-success btn-custom">
+Deposit
+</button>
+
+</div>
+
+</div>
+
+
+<!-- Transfer -->
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box transfer-icon">
+<i class="fa-solid fa-arrow-right-arrow-left"></i>
+</div>
+
+<h5>Bank Transfer</h5>
+
+<p>Transfer money between bank accounts instantly.</p>
+
+<button onclick="window.location.href='/banktranferForm'"
+class="btn btn-warning btn-custom">
+Transfer
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ATM -->
+
+<div class="col-md-3">
+
+<div class="service-card">
+
+<div class="icon-box atm-icon">
+<i class="fa-solid fa-credit-card"></i>
+</div>
+
+<h5>ATM Services</h5>
+
+<p>Use ATM services like Apply ATM.</p>
+
+<button onclick="window.location.href='/atmservices'"
+class="btn btn-primary btn-custom">
+ATM
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center p-3">
+
+<p>© 2026 GoldDiggerBank | Secure Digital Banking</p>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

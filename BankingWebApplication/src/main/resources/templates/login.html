@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Login - GoldDiggerBank</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+<style>
+
+/* Page Background */
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Segoe UI',sans-serif;
+
+background:
+linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+url("https://images.unsplash.com/photo-1559526324-4b87b5e36e44") center/cover no-repeat;
+}
+
+/* Login Card */
+
+.login-card{
+width:420px;
+padding:40px;
+border-radius:15px;
+
+background:white;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+
+border:1px solid #eee;
+}
+
+/* Bank icon */
+
+.bank-icon{
+text-align:center;
+font-size:48px;
+color:#2563eb;
+margin-bottom:10px;
+}
+
+/* Title */
+
+.title{
+text-align:center;
+color:#2563eb;
+font-weight:700;
+margin-bottom:25px;
+}
+
+/* Labels */
+
+.form-label{
+color:#444;
+font-weight:500;
+}
+
+/* Inputs */
+
+.form-control{
+background:#f8fafc;
+border:1px solid #ddd;
+color:#333;
+}
+
+.form-control:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 2px rgba(37,99,235,0.1);
+background:white;
+}
+
+/* Icons */
+
+.input-group-text{
+background:#2563eb;
+color:white;
+border:none;
+}
+
+/* Password button */
+
+.input-group-text button{
+border:none;
+background:none;
+}
+
+/* Login Button */
+
+.btn-login{
+background:#2563eb;
+color:white;
+font-weight:600;
+border-radius:8px;
+padding:10px;
+transition:0.3s;
+}
+
+.btn-login:hover{
+background:#1d4ed8;
+}
+
+/* Create account link */
+
+.create-link a{
+color:#2563eb;
+text-decoration:none;
+font-weight:600;
+}
+
+.create-link a:hover{
+text-decoration:underline;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+margin-top:20px;
+color:#777;
+font-size:13px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<div class="bank-icon">
+<i class="fa-solid fa-building-columns"></i>
+</div>
+
+<h3 class="title">GoldDiggerBank</h3>
+
+<!-- Error -->
+<div th:if="${param.error}" class="alert alert-danger text-center">
+Invalid Email or Password
+</div>
+
+<!-- Logout -->
+<div th:if="${param.logout}" class="alert alert-success text-center">
+You have been logged out
+</div>
+
+<form th:action="@{/login}" method="post">
+
+<div class="mb-3">
+
+<label class="form-label">Email</label>
+
+<div class="input-group">
+
+<span class="input-group-text">
+<i class="fa-solid fa-envelope"></i>
+</span>
+
+<input type="email"
+name="username"
+class="form-control"
+placeholder="Enter your email"
+required>
+
+</div>
+
+</div>
+
+
+<div class="mb-3">
+
+<label class="form-label">Password</label>
+
+<div class="input-group">
+
+<span class="input-group-text">
+<i class="fa-solid fa-lock"></i>
+</span>
+
+<input type="password"
+id="password"
+name="password"
+class="form-control"
+placeholder="Enter password"
+required>
+
+<button class="input-group-text" type="button" onclick="togglePassword()">
+<i class="fa-solid fa-eye"></i>
+</button>
+
+</div>
+
+</div>
+
+
+<div class="d-grid mb-3">
+
+<button class="btn btn-login">
+
+<i class="fa-solid fa-right-to-bracket"></i> Login
+
+</button>
+
+</div>
+
+<div class="text-center create-link">
+
+Don't have an account?  
+<a th:href="@{/visitRForm}">Create Account</a>
+
+</div>
+
+</form>
+
+<div class="footer">
+© 2026 GoldDiggerBank Secure Banking
+</div>
+
+</div>
+
+<script>
+
+function togglePassword(){
+
+let pass=document.getElementById("password");
+
+if(pass.type==="password")
+pass.type="text";
+else
+pass.type="password";
+
+}
+
+</script>
+
+</body>
+</html>

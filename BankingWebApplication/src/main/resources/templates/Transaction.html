@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Transaction Details - GoldDiggerBank</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+
+body{
+background:linear-gradient(120deg,#eef2f3,#dfe9f3);
+font-family:'Segoe UI',sans-serif;
+}
+
+/* Navbar */
+
+.navbar{
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar-brand{
+font-weight:bold;
+font-size:22px;
+}
+
+/* Header */
+
+.header-section{
+background:linear-gradient(135deg,#0d6efd,#6f42c1);
+color:white;
+text-align:center;
+padding:60px;
+border-radius:0 0 40px 40px;
+margin-bottom:40px;
+}
+
+.header-section h1{
+font-weight:bold;
+}
+
+/* Card */
+
+.service-card{
+max-width:720px;
+margin:auto;
+border:none;
+border-radius:20px;
+background:rgba(255,255,255,0.95);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+padding:35px;
+}
+
+.service-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Table */
+
+.table th{
+background:#f1f3f6;
+width:40%;
+font-weight:600;
+}
+
+/* Badge */
+
+.success-badge{
+background:#198754;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+}
+
+/* Buttons */
+
+.btn-custom{
+border-radius:25px;
+padding:10px 20px;
+font-weight:600;
+}
+
+/* Footer */
+
+footer{
+margin-top:60px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<div class="container-fluid">
+
+<a style="color: white;" class="navbar-brand" th:href="@{home}">
+<i class="fa-solid fa-building-columns"></i> GoldDiggerBank
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{aboutus}">About Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{contactus}">Contact Us</a>
+</li>
+
+<li class="nav-item">
+<a style="color: white;" class="nav-link active" th:href="@{services}">Services</a>
+</li>
+
+</ul>
+
+<button type="button" onclick="window.location.href='/logout'" class="btn btn-warning">
+LogOut
+</button>
+
+</div>
+</div>
+</nav>
+
+
+<!-- Header -->
+
+<div class="header-section">
+
+<h1 th:if="${acdata != null}">
+<i class="fa-solid fa-circle-check"></i> Transaction Successful
+</h1>
+
+<h1 th:if="${error}">
+<i class="fa-solid fa-circle-xmark"></i> Transaction Failed
+</h1>
+
+<p th:if="${acdata != null}">
+Your GoldDiggerBank transaction has been completed successfully.
+</p>
+
+<p th:if="${error}" th:text="${error}"></p>
+
+</div>
+
+
+<div class="container">
+
+<!-- Error Message -->
+
+<div th:if="${error}" class="alert alert-danger text-center">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+<span th:text="${error}"></span>
+
+</div>
+
+
+<!-- Buttons if transaction fails -->
+
+<div th:if="${error}" class="text-center mb-4">
+
+<a th:href="@{/viewAC}" class="btn btn-warning btn-custom me-2">
+<i class="fa-solid fa-magnifying-glass"></i> Check Account Info
+</a>
+
+<a th:href="@{/transManage}" class="btn btn-secondary btn-custom">
+<i class="fa-solid fa-rotate"></i> Try Again
+</a>
+
+</div>
+
+
+<!-- Account Info if success -->
+
+<div class="service-card" th:if="${acdata != null}">
+
+<h4 class="text-center mb-4">
+
+Account Information
+<span class="success-badge text-white">Active</span>
+
+</h4>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+<th><i class="fa-solid fa-hashtag"></i> Account Number</th>
+<td th:text="${acdata.acnum}"></td>
+</tr>
+
+<tr>
+<th><i class="fa-solid fa-user"></i> Account Holder Name</th>
+<td th:text="${acdata.acholdername}"></td>
+</tr>
+
+<tr>
+<th><i class="fa-solid fa-money-bill-wave"></i> Account Balance</th>
+<td>₹ <span th:text="${acdata.acbalance}"></span></td>
+</tr>
+
+</table>
+
+<div class="text-center mt-4">
+
+<a th:href="@{/home}" class="btn btn-primary btn-custom">
+<i class="fa-solid fa-house"></i> Go To Dashboard
+</a>
+
+</div>
+
+</div>
+
+
+<!-- If no data -->
+
+<div th:if="${acdata == null and error == null}" class="text-center">
+
+<h5>No Account Data Available</h5>
+
+<p>Please open a new account to view details.</p>
+
+<a th:href="@{/openAC}" class="btn btn-primary btn-custom">
+<i class="fa-solid fa-plus"></i> Open Account
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white text-center p-3">
+
+<p>© 2026 GoldDiggerBank | Secure Digital Banking</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

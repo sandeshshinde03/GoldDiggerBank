@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Admin Dashboard - GoldDiggerBank</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+<style>
+
+body{
+background:#f8f6f0;
+font-family:Arial;
+}
+
+/* Navbar */
+
+.navbar{
+background:#111 !important;
+}
+
+.navbar-brand{
+color:#d4af37 !important;
+font-weight:bold;
+}
+
+.nav-link{
+color:white !important;
+}
+
+.nav-link:hover{
+color:#d4af37 !important;
+}
+
+/* Header */
+
+.admin-header{
+background: linear-gradient(135deg,#000000,#b8962e);
+color:white;
+padding:60px;
+border-radius:0 0 40px 40px;
+text-align:center;
+margin-bottom:40px;
+}
+
+.admin-header h1{
+font-weight:bold;
+}
+
+/* Cards */
+
+.card{
+border:none;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.4s;
+background:white;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Icon circle */
+
+.card-icon{
+width:80px;
+height:80px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-size:35px;
+color:white;
+margin-bottom:15px;
+}
+
+/* Different icon colors */
+
+.account-card .card-icon{
+background:linear-gradient(135deg,#ffb300,#d4af37);
+}
+
+.customer-card .card-icon{
+background:linear-gradient(135deg,#007bff,#00c6ff);
+}
+
+.loan-card .card-icon{
+background:linear-gradient(135deg,#28a745,#8fd19e);
+}
+
+.card h5{
+font-weight:bold;
+}
+
+.card p{
+color:#555;
+font-size:14px;
+}
+
+/* Buttons */
+
+.btn-gold{
+background:#d4af37;
+color:black;
+font-weight:bold;
+border:none;
+border-radius:25px;
+padding:8px 20px;
+}
+
+.btn-gold:hover{
+background:#b8962e;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ADMIN NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+<div class="container-fluid">
+
+<a class="navbar-brand" th:href="@{/homeAdmin}">
+<i class="fa-solid fa-building-columns"></i> GoldDiggerBank
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<li class="nav-item">
+<a class="nav-link active" th:href="@{/adminAccounts}">
+<i class="fa-solid fa-users"></i> Accounts
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" th:href="@{/adminCustomers}">
+<i class="fa-solid fa-user-group"></i> Customers
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" th:href="@{/loanQueries}">
+<i class="fa-solid fa-file-invoice-dollar"></i> Loan Requests
+</a>
+</li>
+
+</ul>
+
+<button onclick="window.location.href='/logout'" class="btn btn-warning">
+Logout
+</button>
+
+</div>
+</div>
+</nav>
+
+
+<!-- HEADER -->
+
+<div class="admin-header">
+
+<h1>
+<i class="fa-solid fa-user-shield"></i>
+Admin Control Panel
+</h1>
+
+<p>Securely manage GoldDiggerBank operations</p>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div class="container">
+
+<div class="row g-4">
+
+<!-- Accounts -->
+
+<div class="col-md-4">
+
+<div class="card text-center p-4 account-card">
+
+<div class="card-icon">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<h5>Account Management</h5>
+
+<p>View and manage all bank accounts.</p>
+
+<a href="/adminAccounts" class="btn btn-gold">
+Manage Accounts
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Customers -->
+
+<div class="col-md-4">
+
+<div class="card text-center p-4 customer-card">
+
+<div class="card-icon">
+<i class="fa-solid fa-user-group"></i>
+</div>
+
+<h5>Customer Management</h5>
+
+<p>View and manage registered users.</p>
+
+<a href="/adminCustomers" class="btn btn-gold">
+View Customers
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Loans -->
+
+<div class="col-md-4">
+
+<div class="card text-center p-4 loan-card">
+
+<div class="card-icon">
+<i class="fa-solid fa-file-invoice-dollar"></i>
+</div>
+
+<h5>Loan Management</h5>
+
+<p>Approve or reject loan requests.</p>
+
+<a href="/loanQueries" class="btn btn-gold">
+Manage Loans
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="bg-dark text-white text-center mt-5 p-3">
+
+<p>© 2026 GoldDiggerBank Admin Panel</p>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
